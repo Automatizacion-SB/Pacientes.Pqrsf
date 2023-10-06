@@ -66,8 +66,31 @@ function SendPeticion() {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log("hola");
+    const URL = "http://172.16.1.184:3000/api/v1/pqrsf";
+
+    if (!data.peticionario.id) {
+      delete data.peticionario;
+    }
+    if (!data.paciente.id) {
+      delete data.paciente;
+    }
+
     console.log(data);
+
+    fetch(URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (
