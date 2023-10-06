@@ -1,3 +1,22 @@
+:root {
+  --white: #fbfcfc;
+  --very-light-pink: #c7c7c7;
+  --dark: #232830;
+
+  --green: #009190;
+  --green-dark: #006a69;
+  --red: #de2f40;
+  --orange: #dd6d2c;
+  --lima: #c6ba3a;
+
+  --font-regular: "Roboto", sans-serif;
+  --font-title: "Montserrat", sans-serif;
+
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fe-medium: 500;
+  --fw-bold: 700;
+}
 /*
   1. Use a more-intuitive box-sizing model.
 */
@@ -62,5 +81,5 @@ h6 {
 }
 
 :root {
-  font-family: "Roboto", sans-serif;
+  font-family: var(--font-regular);
 }
