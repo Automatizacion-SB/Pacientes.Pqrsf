@@ -1,18 +1,70 @@
-/* eslint-disable no-unused-vars */
 import { useForm } from "react-hook-form";
 
 import { Layout } from "../../components/Layout";
 
 import "./style.css";
+import { useEffect, useState } from "react";
 
 function SendPeticion() {
+  const URL_API = "http://172.16.1.184:3000/api/v1/";
+  const URL_REFERENCIAS = `${URL_API}referencias/`;
+
+  const [tiposPeticion, setTiposPeticion] = useState([]);
+  const [tiposIdentificacion, setTiposIdentificacion] = useState([]);
+  const [eps, setEps] = useState([]);
+  const [regimenes, setRegimenes] = useState([]);
+  const [departamentos, setDepartamentos] = useState([]);
+  const [areas, setAreas] = useState([]);
+  const [servicios, setServicios] = useState([]);
+
+  const [departamentoSelected, setDepartamentoSelected] = useState(0);
+  const [municipios, setMunicipios] = useState([]);
+
+  useEffect(() => {
+    fetch(`${URL_REFERENCIAS}tipos_peticion`)
+      .then((response) => response.json())
+      .then((data) => setTiposPeticion(data));
+
+    fetch(`${URL_REFERENCIAS}tipos_identificacion`)
+      .then((response) => response.json())
+      .then((data) => setTiposIdentificacion(data));
+
+    fetch(`${URL_REFERENCIAS}eps`)
+      .then((response) => response.json())
+      .then((data) => setEps(data));
+
+    fetch(`${URL_REFERENCIAS}regimenes`)
+      .then((response) => response.json())
+      .then((data) => setRegimenes(data));
+
+    fetch(`${URL_REFERENCIAS}departamentos`)
+      .then((response) => response.json())
+      .then((data) => setDepartamentos(data));
+
+    fetch(`${URL_REFERENCIAS}areas`)
+      .then((response) => response.json())
+      .then((data) => setAreas(data));
+
+    fetch(`${URL_REFERENCIAS}servicios`)
+      .then((response) => response.json())
+      .then((data) => setServicios(data));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    fetch(`${URL_REFERENCIAS}departamentos/${departamentoSelected}/municipios`)
+      .then((response) => response.json())
+      .then((data) => setMunicipios(data));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [departamentoSelected]);
+
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm();
 
-  // TODO
   const onSubmit = (data) => {
     console.log("hola");
     console.log(data);
@@ -28,6 +80,11 @@ function SendPeticion() {
           </label>
           <select className="input" {...register("tipoPeticionId")}>
             <option value=""></option>
+            {tiposPeticion.map(({ id, nombre }) => (
+              <option key={id} value={id}>
+                {nombre}
+              </option>
+            ))}
           </select>
         </div>
 
@@ -39,6 +96,11 @@ function SendPeticion() {
             </label>
             <select className="input" {...register("peticionario.tipoId")}>
               <option value=""></option>
+              {tiposIdentificacion.map(({ id, nombre }) => (
+                <option key={id} value={id}>
+                  {nombre}
+                </option>
+              ))}
             </select>
           </div>
 
@@ -121,8 +183,12 @@ function SendPeticion() {
               Tipo de documento
             </label>
             <select className="input" {...register("paciente.tipoId")}>
-              <option value="op1"></option>
-              <option value="op2"></option>
+              <option value=""></option>
+              {tiposIdentificacion.map(({ id, nombre }) => (
+                <option key={id} value={id}>
+                  {nombre}
+                </option>
+              ))}
             </select>
           </div>
 
@@ -170,6 +236,11 @@ function SendPeticion() {
             </label>
             <select className="input" {...register("paciente.epsId", {})}>
               <option value=""></option>
+              {eps.map(({ id, nombre }) => (
+                <option key={id} value={id}>
+                  {nombre}
+                </option>
+              ))}
             </select>
           </div>
 
@@ -179,18 +250,29 @@ function SendPeticion() {
             </label>
             <select className="input" {...register("paciente.regimenId", {})}>
               <option value=""></option>
+              {regimenes.map(({ id, nombre }) => (
+                <option key={id} value={id}>
+                  {nombre}
+                </option>
+              ))}
             </select>
           </div>
 
           <div className="input-box">
             <label htmlFor="paciente.departamentoId" className="label">
-              Departamento
+              Departamento:{" "}
             </label>
             <select
               className="input"
               {...register("paciente.departamentoId", {})}
+              onChange={(e) => setDepartamentoSelected(e.target.value)}
             >
               <option value=""></option>
+              {departamentos.map(({ id, nombre }) => (
+                <option key={id} value={id}>
+                  {nombre}
+                </option>
+              ))}
             </select>
           </div>
 
@@ -200,6 +282,11 @@ function SendPeticion() {
             </label>
             <select className="input" {...register("paciente.municipioId", {})}>
               <option value=""></option>
+              {municipios.map(({ id, nombre }) => (
+                <option key={id} value={id}>
+                  {nombre}
+                </option>
+              ))}
             </select>
           </div>
         </div>
@@ -212,6 +299,11 @@ function SendPeticion() {
             </label>
             <select className="input" {...register("areaId", {})}>
               <option value=""></option>
+              {areas.map(({ id, nombre }) => (
+                <option key={id} value={id}>
+                  {nombre}
+                </option>
+              ))}
             </select>
           </div>
 
@@ -221,6 +313,11 @@ function SendPeticion() {
             </label>
             <select className="input" {...register("servicioId", {})}>
               <option value=""></option>
+              {servicios.map(({ id, nombre }) => (
+                <option key={id} value={id}>
+                  {nombre}
+                </option>
+              ))}
             </select>
           </div>
 
