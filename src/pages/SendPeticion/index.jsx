@@ -1,9 +1,9 @@
 import { useForm } from "react-hook-form";
+import { useEffect, useState } from "react";
 
 import { Layout } from "../../components/Layout";
 
 import "./style.css";
-import { useEffect, useState } from "react";
 
 function SendPeticion() {
   const URL_API = "http://172.16.1.184:3000/api/v1/";
@@ -78,7 +78,15 @@ function SendPeticion() {
           <label htmlFor="tipoPeticionId" className="label">
             Tipo de petición
           </label>
-          <select className="input" {...register("tipoPeticionId")}>
+          <select
+            className="input"
+            {...register("tipoPeticionId", {
+              required: {
+                value: true,
+                message: "campo obligatorio",
+              },
+            })}
+          >
             <option value=""></option>
             {tiposPeticion.map(({ id, nombre }) => (
               <option key={id} value={id}>
@@ -86,6 +94,11 @@ function SendPeticion() {
               </option>
             ))}
           </select>
+          {errors.tipoPeticionId && (
+            <p role="alert" className="alert">
+              {errors.tipoPeticionId.message}
+            </p>
+          )}
         </div>
 
         <h2 className="section__title">Información peticionario</h2>
@@ -297,7 +310,15 @@ function SendPeticion() {
             <label htmlFor="areaId" className="label">
               Area
             </label>
-            <select className="input" {...register("areaId", {})}>
+            <select
+              className="input"
+              {...register("areaId", {
+                required: {
+                  value: true,
+                  message: "campo requerido",
+                },
+              })}
+            >
               <option value=""></option>
               {areas.map(({ id, nombre }) => (
                 <option key={id} value={id}>
@@ -305,13 +326,26 @@ function SendPeticion() {
                 </option>
               ))}
             </select>
+            {errors.areaId && (
+              <p role="alert" className="alert">
+                {errors.areaId.message}
+              </p>
+            )}
           </div>
 
           <div className="input-box">
             <label htmlFor="servicioId" className="label">
               Servicio
             </label>
-            <select className="input" {...register("servicioId", {})}>
+            <select
+              className="input"
+              {...register("servicioId", {
+                required: {
+                  value: true,
+                  message: "campo requerido",
+                },
+              })}
+            >
               <option value=""></option>
               {servicios.map(({ id, nombre }) => (
                 <option key={id} value={id}>
@@ -319,13 +353,32 @@ function SendPeticion() {
                 </option>
               ))}
             </select>
+            {errors.servicioId && (
+              <p role="alert" className="alert">
+                {errors.servicioId.message}
+              </p>
+            )}
           </div>
 
           <div className="input-box">
             <label htmlFor="dirigidaA" className="label">
               Dirigida A
             </label>
-            <input type="text" className="input" {...register("dirigidaA")} />
+            <input
+              type="text"
+              className="input"
+              {...register("dirigidaA", {
+                required: {
+                  value: true,
+                  message: "campo obligatorio",
+                },
+              })}
+            />
+            {errors.dirigidaA && (
+              <p role="alert" className="alert">
+                {errors.dirigidaA.message}
+              </p>
+            )}
           </div>
 
           <div className="input-box__all">
@@ -336,8 +389,18 @@ function SendPeticion() {
               cols="30"
               rows="10"
               className="input"
-              {...register("motivo")}
+              {...register("motivo", {
+                required: {
+                  value: true,
+                  message: "campo requerido",
+                },
+              })}
             ></textarea>
+            {errors.motivo && (
+              <p role="alert" className="alert">
+                {errors.motivo.message}
+              </p>
+            )}
           </div>
 
           <div className="grid-group">
