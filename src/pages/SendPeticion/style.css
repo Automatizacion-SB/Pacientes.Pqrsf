@@ -1,0 +1,92 @@
+.form {
+  padding: 1rem 3rem;
+}
+
+.title {
+  color: var(--lima);
+}
+
+.section {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.section__title {
+  font-family: var(--font-title);
+  color: var(--green);
+  text-transform: uppercase;
+  margin: 1rem 0;
+}
+
+.section__title::before {
+  content: "";
+  margin-top: 33px;
+  position: absolute;
+  height: 3px;
+  width: 50%;
+  background: var(--green);
+}
+
+.input-box {
+  display: flex;
+  flex-direction: column;
+  width: 33%;
+  margin: 0.5rem 0;
+}
+
+.input-box__all {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0.5rem 0;
+}
+
+.input-box__all .input {
+  height: 90px;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid var(--very-light-pink);
+  padding-left: 15px;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+
+.label {
+  margin-bottom: 5px;
+  font-weight: var(--fw-regular);
+}
+
+.input {
+  height: 35px;
+  width: 90%;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid var(--very-light-pink);
+  padding-left: 15px;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+
+.input:focus,
+.input:active {
+  border-color: var(--green-dark);
+}
+
+.grid-group {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.form-submit {
+  margin-top: 24px;
+  align-self: center;
+  background-color: var(--green);
+  border: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 1rem 2.5rem;
+  color: var(--white);
+  border-radius: 8px;
+  font-weight: var(--fw-bold);
+}
