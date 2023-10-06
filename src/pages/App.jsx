@@ -4,6 +4,7 @@ import { Home } from "./Home";
 import { SendPeticion } from "./SendPeticion";
 import { SearchPeticion } from "./SearchPeticion";
 import { NotFound } from "./NotFound";
+import { Navbar } from "../../Components/Navbar";
 
 function AppRoutes() {
   const routes = useRoutes([
@@ -20,6 +21,7 @@ function App() {
   return (
     <BrowserRouter>
       <AppRoutes />
+      <Navbar />
     </BrowserRouter>
   );
 }
