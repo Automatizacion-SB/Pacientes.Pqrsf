@@ -1,4 +1,6 @@
-import { Layout } from "../components/Layout";
+import { Layout } from "../../components/Layout";
+
+import "./style.css";
 
 function SearchPeticion() {
   return (

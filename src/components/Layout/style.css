@@ -1,7 +1,14 @@
 .container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   margin-top: 80px;
-  padding: 0 10rem;
+  width: 90vw;
   background-color: var(--white);
+}
+
+@media (400px <= width <= 600px) {
+  .container {
+    padding: 0 0.5rem;
+  }
 }

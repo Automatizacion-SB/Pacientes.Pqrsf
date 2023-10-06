@@ -1,5 +1,7 @@
 .form {
-  padding: 1rem 3rem;
+  width: 100%;
+  justify-self: center;
+  padding: 1rem 1rem;
 }
 
 .title {
@@ -94,4 +96,17 @@
 
 .alert {
   color: var(--red);
+}
+
+@media (400px <= width <= 600px) {
+  .form {
+    padding: 1rem 0.5rem;
+  }
+  .section {
+    flex-direction: column;
+  }
+
+  .input-box {
+    width: 100%;
+  }
 }
