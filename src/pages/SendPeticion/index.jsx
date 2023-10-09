@@ -20,6 +20,9 @@ function SendPeticion() {
   const [departamentoSelected, setDepartamentoSelected] = useState(0);
   const [municipios, setMunicipios] = useState([]);
 
+  const [isRequiredPeticionario, setIsRequiredPeticionario] = useState(false);
+  const [isRequiredPaciente, setIsRequiredPaciente] = useState(false);
+
   useEffect(() => {
     fetch(`${URL_REFERENCIAS}tipos_peticion`)
       .then((response) => response.json())
@@ -61,7 +64,6 @@ function SendPeticion() {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
 
@@ -130,7 +132,14 @@ function SendPeticion() {
             <label htmlFor="peticionario.tipId" className="label">
               Tipo de documento
             </label>
-            <select className="input" {...register("peticionario.tipoId")}>
+            <select
+              className="input"
+              {...register("peticionario.tipoId", {
+                validate: (value) => {
+                  !value ? setIsRequiredPeticionario(true) : null;
+                },
+              })}
+            >
               <option value=""></option>
               {tiposIdentificacion.map(({ id, nombre }) => (
                 <option key={id} value={id}>
@@ -148,6 +157,10 @@ function SendPeticion() {
               type="text"
               className="input"
               {...register("peticionario.id", {
+                validate: {
+                  value: isRequiredPeticionario,
+                  message: "campo requerido",
+                },
                 pattern: {
                   value: /^\d+$/,
                   message: "Por favor, ingresa solo números",
@@ -163,7 +176,12 @@ function SendPeticion() {
             <input
               type="text"
               className="input"
-              {...register("peticionario.nombre")}
+              {...register("peticionario.nombre", {
+                validate: {
+                  value: isRequiredPeticionario,
+                  message: "campo requerido",
+                },
+              })}
             />
           </div>
 
@@ -174,7 +192,12 @@ function SendPeticion() {
             <input
               type="text"
               className="input"
-              {...register("peticionario.apellido")}
+              {...register("peticionario.apellido", {
+                validate: {
+                  value: isRequiredPeticionario,
+                  message: "campo requerido",
+                },
+              })}
             />
           </div>
 
@@ -186,6 +209,10 @@ function SendPeticion() {
               type="text"
               className="input"
               {...register("peticionario.telefono", {
+                validate: {
+                  value: isRequiredPeticionario,
+                  message: "campo requerido",
+                },
                 pattern: {
                   value: /^\d+$/,
                   message: "Por favor, ingresa solo números",
@@ -218,7 +245,14 @@ function SendPeticion() {
             <label htmlFor="paciente.tipoId" className="label">
               Tipo de documento
             </label>
-            <select className="input" {...register("paciente.tipoId")}>
+            <select
+              className="input"
+              {...register("paciente.tipoId", {
+                validate: (value) => {
+                  !value ? setIsRequiredPaciente(true) : null;
+                },
+              })}
+            >
               <option value=""></option>
               {tiposIdentificacion.map(({ id, nombre }) => (
                 <option key={id} value={id}>
@@ -236,6 +270,10 @@ function SendPeticion() {
               type="text"
               className="input"
               {...register("paciente.id", {
+                required: {
+                  value: isRequiredPaciente,
+                  message: "campo requerido",
+                },
                 pattern: {
                   value: /^\d+$/,
                   message: "Por favor, ingresa solo números",
@@ -251,7 +289,12 @@ function SendPeticion() {
             <input
               type="text"
               className="input"
-              {...register("paciente.nombre")}
+              {...register("paciente.nombre", {
+                required: {
+                  value: isRequiredPaciente,
+                  message: "campo requerido",
+                },
+              })}
             />
           </div>
 
@@ -262,7 +305,12 @@ function SendPeticion() {
             <input
               type="text"
               className="input"
-              {...register("paciente.apellido")}
+              {...register("paciente.apellido", {
+                required: {
+                  value: isRequiredPaciente,
+                  message: "campo requerido",
+                },
+              })}
             />
           </div>
 
@@ -270,7 +318,15 @@ function SendPeticion() {
             <label htmlFor="paciente.epsId" className="label">
               EPS
             </label>
-            <select className="input" {...register("paciente.epsId", {})}>
+            <select
+              className="input"
+              {...register("paciente.epsId", {
+                required: {
+                  value: isRequiredPaciente,
+                  message: "campo requerido",
+                },
+              })}
+            >
               <option value=""></option>
               {eps.map(({ id, nombre }) => (
                 <option key={id} value={id}>
@@ -284,7 +340,15 @@ function SendPeticion() {
             <label htmlFor="paciente.regimenId" className="label">
               Regimen
             </label>
-            <select className="input" {...register("paciente.regimenId", {})}>
+            <select
+              className="input"
+              {...register("paciente.regimenId", {
+                required: {
+                  value: isRequiredPaciente,
+                  message: "campo requerido",
+                },
+              })}
+            >
               <option value=""></option>
               {regimenes.map(({ id, nombre }) => (
                 <option key={id} value={id}>
@@ -300,7 +364,12 @@ function SendPeticion() {
             </label>
             <select
               className="input"
-              {...register("paciente.departamentoId", {})}
+              {...register("paciente.departamentoId", {
+                required: {
+                  value: isRequiredPaciente,
+                  message: "campo requerido",
+                },
+              })}
               onChange={(e) => setDepartamentoSelected(e.target.value)}
             >
               <option value=""></option>
@@ -316,7 +385,15 @@ function SendPeticion() {
             <label htmlFor="paciente.municipioId" className="label">
               Municipio
             </label>
-            <select className="input" {...register("paciente.municipioId", {})}>
+            <select
+              className="input"
+              {...register("paciente.municipioId", {
+                required: {
+                  value: isRequiredPaciente,
+                  message: "campo requerido",
+                },
+              })}
+            >
               <option value=""></option>
               {municipios.map(({ id, nombre }) => (
                 <option key={id} value={id}>
