@@ -16,6 +16,8 @@
   --fw-regular: 400;
   --fe-medium: 500;
   --fw-bold: 700;
+
+  font-family: var(--font-regular);
 }
 /*
   1. Use a more-intuitive box-sizing model.
@@ -78,8 +80,4 @@ h6 {
 #root,
 #__next {
   isolation: isolate;
-}
-
-:root {
-  font-family: var(--font-regular);
 }

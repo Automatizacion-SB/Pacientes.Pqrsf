@@ -1,14 +1,18 @@
 .container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.container-page {
+  width: 80%;
   margin-top: 80px;
-  width: 90vw;
-  background-color: var(--white);
 }
 
 @media (400px <= width <= 600px) {
-  .container {
-    padding: 0 0.5rem;
+  .container-page {
+    width: 83%;
   }
 }
