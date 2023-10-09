@@ -65,6 +65,7 @@ function SendPeticion() {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
   const onSubmit = (data) => {
@@ -87,8 +88,8 @@ function SendPeticion() {
       body: JSON.stringify(data),
     })
       .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
+      .then(() => {
+        reset();
       })
       .catch((error) => {
         console.error(error);
@@ -136,7 +137,9 @@ function SendPeticion() {
               className="input"
               {...register("peticionario.tipoId", {
                 validate: (value) => {
-                  !value ? setIsRequiredPeticionario(true) : null;
+                  value
+                    ? setIsRequiredPeticionario(true)
+                    : setIsRequiredPeticionario(false);
                 },
               })}
             >
@@ -157,7 +160,7 @@ function SendPeticion() {
               type="text"
               className="input"
               {...register("peticionario.id", {
-                validate: {
+                required: {
                   value: isRequiredPeticionario,
                   message: "campo requerido",
                 },
@@ -167,6 +170,11 @@ function SendPeticion() {
                 },
               })}
             />
+            {errors.peticionario?.id && (
+              <p role="alert" className="alert">
+                {errors.peticionario?.id.message}
+              </p>
+            )}
           </div>
 
           <div className="input-box">
@@ -177,12 +185,17 @@ function SendPeticion() {
               type="text"
               className="input"
               {...register("peticionario.nombre", {
-                validate: {
+                required: {
                   value: isRequiredPeticionario,
                   message: "campo requerido",
                 },
               })}
             />
+            {errors.peticionario?.nombre && (
+              <p role="alert" className="alert">
+                {errors.peticionario?.nombre.message}
+              </p>
+            )}
           </div>
 
           <div className="input-box">
@@ -193,12 +206,17 @@ function SendPeticion() {
               type="text"
               className="input"
               {...register("peticionario.apellido", {
-                validate: {
+                required: {
                   value: isRequiredPeticionario,
                   message: "campo requerido",
                 },
               })}
             />
+            {errors.peticionario?.apellido && (
+              <p role="alert" className="alert">
+                {errors.peticionario?.apellido.message}
+              </p>
+            )}
           </div>
 
           <div className="input-box">
@@ -209,7 +227,7 @@ function SendPeticion() {
               type="text"
               className="input"
               {...register("peticionario.telefono", {
-                validate: {
+                required: {
                   value: isRequiredPeticionario,
                   message: "campo requerido",
                 },
@@ -219,6 +237,11 @@ function SendPeticion() {
                 },
               })}
             />
+            {errors.peticionario?.telefono && (
+              <p role="alert" className="alert">
+                {errors.peticionario?.telefono.message}
+              </p>
+            )}
           </div>
 
           <div className="input-box">
@@ -249,7 +272,9 @@ function SendPeticion() {
               className="input"
               {...register("paciente.tipoId", {
                 validate: (value) => {
-                  !value ? setIsRequiredPaciente(true) : null;
+                  value
+                    ? setIsRequiredPaciente(true)
+                    : setIsRequiredPaciente(false);
                 },
               })}
             >
@@ -280,6 +305,11 @@ function SendPeticion() {
                 },
               })}
             />
+            {errors.paciente?.id && (
+              <p role="alert" className="alert">
+                {errors.paciente?.id.message}
+              </p>
+            )}
           </div>
 
           <div className="input-box">
@@ -296,6 +326,11 @@ function SendPeticion() {
                 },
               })}
             />
+            {errors.paciente?.nombre && (
+              <p role="alert" className="alert">
+                {errors.paciente?.nombre.message}
+              </p>
+            )}
           </div>
 
           <div className="input-box">
@@ -312,6 +347,11 @@ function SendPeticion() {
                 },
               })}
             />
+            {errors.paciente?.apellido && (
+              <p role="alert" className="alert">
+                {errors.paciente?.apellido.message}
+              </p>
+            )}
           </div>
 
           <div className="input-box">
@@ -334,6 +374,11 @@ function SendPeticion() {
                 </option>
               ))}
             </select>
+            {errors.paciente?.epsId && (
+              <p role="alert" className="alert">
+                {errors.paciente?.epsId.message}
+              </p>
+            )}
           </div>
 
           <div className="input-box">
@@ -356,6 +401,11 @@ function SendPeticion() {
                 </option>
               ))}
             </select>
+            {errors.paciente?.regimenId && (
+              <p role="alert" className="alert">
+                {errors.paciente?.regimenId.message}
+              </p>
+            )}
           </div>
 
           <div className="input-box">
@@ -379,6 +429,11 @@ function SendPeticion() {
                 </option>
               ))}
             </select>
+            {errors.paciente?.departamentoId && (
+              <p role="alert" className="alert">
+                {errors.paciente?.departamentoId.message}
+              </p>
+            )}
           </div>
 
           <div className="input-box">
@@ -401,6 +456,11 @@ function SendPeticion() {
                 </option>
               ))}
             </select>
+            {errors.paciente?.municipioId && (
+              <p role="alert" className="alert">
+                {errors.paciente?.municipioId.message}
+              </p>
+            )}
           </div>
         </div>
 
