@@ -6,7 +6,6 @@
 
 .logo {
   align-self: center;
-  border: 1px solid red;
   width: 400px;
 }
 
@@ -39,6 +38,7 @@
 }
 
 .detail__text span {
+  color: var(--green);
   font-weight: var(--fw-bold);
 }
 
@@ -54,4 +54,18 @@
   color: var(--white);
   padding: 1rem 2rem;
   border-radius: 10px;
+}
+
+@media (400px <= width <= 600px) {
+  .details-group {
+    padding: 0;
+  }
+  .detail {
+    flex-direction: column;
+  }
+
+  .flex-group {
+    gap: 1rem;
+    flex-direction: column;
+  }
 }
