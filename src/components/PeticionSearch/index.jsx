@@ -26,11 +26,11 @@ function PeticionSearch({ data }) {
     // Negado
   };
   return (
-    <div className="container-2">
+    <div className="container">
       <div className={`${context.isPeticionDetailOpen ? "" : "hidden"}  card`}>
         <h2>Peticion con identificador {id}</h2>
-        <p>fecha de envió: {fechaRecepcion}</p>
-        <p>
+        <p className="card__text">fecha de envió: {fechaRecepcion}</p>
+        <p className="card__text">
           estado de la peticion
           <span className={`status ${status[estadoId]} `}>
             {estadoPeticion}

@@ -1,23 +1,16 @@
-.container-2 {
-  width: 100%;
-  height: 300px;
-  display: grid;
-  place-content: center;
-}
-
 .card {
+  margin-top: 50px;
   width: 500px;
   height: 275px;
-  padding: 1.5rem;
-  border: 1px solid black;
   display: flex;
+  border: 1px solid #4242423b;
   flex-direction: column;
+  padding: 1rem 1.5rem;
   gap: 1rem;
 }
 
-.button {
-  align-self: center;
-  width: 200px;
+.card__text {
+  text-transform: uppercase;
 }
 
 .hidden {
@@ -25,13 +18,26 @@
 }
 
 .status {
+  margin-left: 8px;
   border-radius: 0.2rem;
-  background-color: red;
-  padding: 0.2rem 1rem;
+  padding: 0.5rem 1rem;
   text-align: center;
 }
 
 .status-not-started {
-  background-color: var(--dark);
-  color: var(--white);
+  background-color: #4242423b;
+  color: #2e2e2edd;
+}
+.button {
+  align-content: center;
+  width: 200px;
+}
+
+@media (400px<= width <= 600px) {
+  .card {
+    width: 100%;
+  }
+  .card p {
+    font-size: 16px;
+  }
 }

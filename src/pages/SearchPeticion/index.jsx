@@ -45,7 +45,6 @@ function SearchPeticion() {
           Consultar
         </button>
       </div>
-      <p>{radicado}</p>
 
       <PeticionSearch data={peticion} />
     </Layout>
