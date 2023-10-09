@@ -1,6 +1,7 @@
-.container-send {
-  width: 100vw;
-  height: 100%;
-  display: grid;
-  place-content: center;
+.container {
+  gap: 1rem;
+}
+
+.input {
+  width: 300px;
 }

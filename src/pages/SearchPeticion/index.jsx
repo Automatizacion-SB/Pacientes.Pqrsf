@@ -27,27 +27,27 @@ function SearchPeticion() {
   return (
     <Layout>
       <div className="container">
-        <div className="container-send">
-          <h1>Consultar PQRSF</h1>
-          <p>Diligencie el numero de radicado de la peticion</p>
-          <input
-            type="text"
-            className="input"
-            onChange={(e) => setRadicado(e.target.value)}
-          />
-          <button
-            onClick={async () => {
-              await searchPQRSF();
-              context.openPeticionDetail();
-            }}
-          >
-            Consultar
-          </button>
-        </div>
-        <p>{radicado}</p>
-
-        <PeticionSearch data={peticion} />
+        <h1 className="title">Consultar PQRSF</h1>
+        <p>Diligencie el numero de radicado de la peticion</p>
+        <input
+          type="text"
+          className="input"
+          placeholder="Ingrese el identificador de la petición"
+          onChange={(e) => setRadicado(e.target.value)}
+        />
+        <button
+          className="button"
+          onClick={async () => {
+            searchPQRSF();
+            context.openPeticionDetail();
+          }}
+        >
+          Consultar
+        </button>
       </div>
+      <p>{radicado}</p>
+
+      <PeticionSearch data={peticion} />
     </Layout>
   );
 }
