@@ -1,15 +1,12 @@
 import { NavLink } from "react-router-dom";
+import bandera from "../../assets/logos/logo.jpg";
 
 import "./style.css";
 
 function Navbar() {
   return (
     <nav className="nav">
-      <img
-        src="https://www.svgrepo.com/show/532033/cloud.svg"
-        alt=""
-        className="nav__logo"
-      />
+      <img src={bandera} alt="" className="nav__logo" />
       <ul className="nav__list">
         <li className="nav__item">
           <NavLink

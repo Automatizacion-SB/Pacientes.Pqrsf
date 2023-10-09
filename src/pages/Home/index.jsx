@@ -1,16 +1,21 @@
 import { Layout } from "../../components/Layout";
 
+import logo from "../../assets/logos/logo.jpg";
+
+import document from "../../assets/icons/document.svg";
+import danger from "../../assets/icons/danger-circle.svg";
+// import danger from "../../assets/icons/danger-circle.svg";
+import goodJob from "../../assets/icons/like.svg";
+import bomb from "../../assets/icons/bomb-emoji.svg";
+import sadCircle from "../../assets/icons/sad-circle.svg";
+
 import "./style.css";
 
 function Home() {
   return (
     <Layout>
       <div className="home">
-        <img
-          src="https://www.socialancer.com/wp-content/uploads/2022/03/logos-para-empresas.png"
-          alt=""
-          className="logo"
-        />
+        <img src={logo} alt="" className="logo" />
         <h1 className="title">Te escuchamos</h1>
 
         <p className="subtitle">
@@ -23,11 +28,7 @@ function Home() {
 
         <div className="details-group">
           <article className="detail">
-            <img
-              src="https://www.svgrepo.com/show/478992/good-job-hand.svg"
-              alt=""
-              className="detail__logo"
-            />
+            <img src={document} alt="" className="detail__logo" />
             <p className="detail__text">
               <span>Petición:</span> Solicitud a través de la cual una persona
               por motivos de interés general o particular solicita la
@@ -38,11 +39,7 @@ function Home() {
           </article>
 
           <article className="detail">
-            <img
-              src="https://www.svgrepo.com/show/478992/good-job-hand.svg"
-              alt=""
-              className="detail__logo"
-            />
+            <img src={danger} alt="" className="detail__logo" />
             <p className="detail__text">
               <span>Queja:</span> Manifestación de una persona, a través de la
               cual expresa inconformidad con el actuar del hospital.
@@ -50,11 +47,7 @@ function Home() {
           </article>
 
           <article className="detail">
-            <img
-              src="https://www.svgrepo.com/show/478992/good-job-hand.svg"
-              alt=""
-              className="detail__logo"
-            />
+            <img src={sadCircle} alt="" className="detail__logo" />
             <p className="detail__text">
               <span>Reclamo:</span> Solicitud a través de la cual los usuarios
               del hospital dan a conocer su insatisfacción con la prestación del
@@ -64,11 +57,7 @@ function Home() {
           </article>
 
           <article className="detail">
-            <img
-              src="https://www.svgrepo.com/show/478992/good-job-hand.svg"
-              alt=""
-              className="detail__logo"
-            />
+            <img src={bomb} alt="" className="detail__logo" />
             <p className="detail__text">
               <span>Sugerencia:</span> Es un consejo, recomendación o
               insinuación que formula una persona para el mejoramiento de las
@@ -80,11 +69,7 @@ function Home() {
           </article>
 
           <article className="detail">
-            <img
-              src="https://www.svgrepo.com/show/478992/good-job-hand.svg"
-              alt=""
-              className="detail__logo"
-            />
+            <img src={goodJob} alt="" className="detail__logo" />
             <p className="detail__text">
               <span>Felicitación:</span> Es la manifestación que expresa el
               agrado o satisfacción que experimenta un usuario con un empleado,
