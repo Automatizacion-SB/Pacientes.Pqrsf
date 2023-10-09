@@ -5,6 +5,7 @@ import { SendPeticion } from "./SendPeticion";
 import { SearchPeticion } from "./SearchPeticion";
 import { NotFound } from "./NotFound";
 import { Navbar } from "../components/Navbar";
+import { PeticionProvider } from "../Context";
 
 function AppRoutes() {
   const routes = useRoutes([
@@ -19,10 +20,12 @@ function AppRoutes() {
 
 function App() {
   return (
-    <BrowserRouter>
-      <Navbar />
-      <AppRoutes />
-    </BrowserRouter>
+    <PeticionProvider>
+      <BrowserRouter>
+        <Navbar />
+        <AppRoutes />
+      </BrowserRouter>
+    </PeticionProvider>
   );
 }
 

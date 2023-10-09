@@ -19,3 +19,19 @@
   align-self: center;
   width: 200px;
 }
+
+.hidden {
+  display: none;
+}
+
+.status {
+  border-radius: 0.2rem;
+  background-color: red;
+  padding: 0.2rem 1rem;
+  text-align: center;
+}
+
+.status-not-started {
+  background-color: var(--dark);
+  color: var(--white);
+}
