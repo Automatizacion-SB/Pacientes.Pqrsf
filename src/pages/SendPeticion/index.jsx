@@ -29,6 +29,8 @@ function SendPeticion() {
 
   const [peticion, setPeticion] = useState({});
 
+  const [pacienteRegimenId, setPacienteRegimenId] = useState("");
+
   useEffect(() => {
     fetch(`${URL_REFERENCIAS}tipos_peticion`)
       .then((response) => response.json())
@@ -74,6 +76,15 @@ function SendPeticion() {
     formState: { errors },
     reset,
   } = useForm();
+
+  // Efecto para establecer el valor predeterminado de paciente.regimenId
+  useEffect(() => {
+    if (watch("paciente.epsId") === "15") {
+      setPacienteRegimenId("1"); // Establece el valor predeterminado como 1
+    } else {
+      setPacienteRegimenId(""); // Restablece el valor predeterminado si no es igual a 1
+    }
+  }, [watch("paciente.epsId")]);
 
   const onSubmit = (data) => {
     const URL = "http://172.16.1.184:3000/api/v1/pqrsf";
@@ -412,6 +423,9 @@ function SendPeticion() {
               Regimen
             </label>
             <select
+              disabled={pacienteRegimenId == 15}
+              value={pacienteRegimenId}
+              onChange={(e) => setPacienteRegimenId(e.target.value)}
               className="input"
               {...register("paciente.regimenId", {
                 required: {
