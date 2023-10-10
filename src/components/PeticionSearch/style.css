@@ -26,8 +26,34 @@
 
 .status-not-started {
   background-color: #4242423b;
-  color: #2e2e2edd;
+  color: #fcfcfcdd;
 }
+
+.status-in-progress {
+  background-color: #e09e2c;
+  color: #474239;
+}
+
+/* Pendiente por Respuesta
+
+Respondido */
+
+.status-refused {
+  background-color: #e14639;
+  color: #332726;
+}
+
+
+.status-done {
+  background-color: #88e12d;
+  color: #2e3329;
+}
+
+
+
+
+
+
 .button {
   align-content: center;
   width: 200px;
@@ -37,6 +63,7 @@
   .card {
     width: 100%;
   }
+
   .card p {
     font-size: 16px;
   }

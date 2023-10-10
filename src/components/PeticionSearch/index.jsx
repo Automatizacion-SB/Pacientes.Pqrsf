@@ -19,11 +19,11 @@ function PeticionSearch({ data }) {
 
   const status = {
     1: " status-not-started",
-    // Estudio
-    // Pendiente por Respuesta
-    // Respondido
-    // Cerrado
-    // Negado
+    2: "status-in-progress",
+    3: "status-in-progress",
+    4: "status-in-progress",
+    5: "status-done",
+    6: "status-refused",
   };
   return (
     <div className="container">
