@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 
 import { Layout } from "../../components/Layout";
+import { PeticionSearch } from "../../components/PeticionSearch";
 
 import "./style.css";
 
@@ -94,6 +95,13 @@ function SendPeticion() {
       .catch((error) => {
         console.error(error);
       });
+
+    return (
+      <>
+        <p>cosa</p>
+        <PeticionSearch />
+      </>
+    );
   };
 
   return (
