@@ -1,12 +1,15 @@
 import { useForm } from "react-hook-form";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import { Layout } from "../../components/Layout";
-import { PeticionSearch } from "../../components/PeticionSearch";
 
 import "./style.css";
+import { PeticionContext } from "../../Context";
+import { Modal } from "../../components/Modal";
 
 function SendPeticion() {
+  const { openModal } = useContext(PeticionContext);
+
   const URL_API = "http://172.16.1.184:3000/api/v1/";
   const URL_REFERENCIAS = `${URL_API}referencias/`;
 
@@ -23,6 +26,8 @@ function SendPeticion() {
 
   const [isRequiredPeticionario, setIsRequiredPeticionario] = useState(false);
   const [isRequiredPaciente, setIsRequiredPaciente] = useState(false);
+
+  const [peticion, setPeticion] = useState({});
 
   useEffect(() => {
     fetch(`${URL_REFERENCIAS}tipos_peticion`)
@@ -89,19 +94,15 @@ function SendPeticion() {
       body: JSON.stringify(data),
     })
       .then((response) => response.json())
-      .then(() => {
+      .then((data) => {
+        setPeticion(data);
         reset();
       })
       .catch((error) => {
         console.error(error);
       });
 
-    return (
-      <>
-        <p>cosa</p>
-        <PeticionSearch />
-      </>
-    );
+    openModal();
   };
 
   return (
@@ -580,6 +581,7 @@ function SendPeticion() {
           </div>
         </div>
       </form>
+      <Modal data={peticion} />
     </Layout>
   );
 }
