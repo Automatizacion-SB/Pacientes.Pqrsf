@@ -4,6 +4,7 @@
   align-items: center;
   width: 100%;
   height: 100%;
+  margin-bottom: 30px;
 }
 
 .container-page {
@@ -11,7 +12,7 @@
   margin-top: 80px;
 }
 
-@media (400px <= width <= 800px) {
+@media (200px <= width <= 800px) {
   .container-page {
     width: 83%;
   }

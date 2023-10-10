@@ -10,6 +10,7 @@ import bomb from "../../assets/icons/bomb-emoji.svg";
 import sadCircle from "../../assets/icons/sad-circle.svg";
 
 import "./style.css";
+import { Link } from "react-router-dom";
 
 function Home() {
   return (
@@ -80,12 +81,12 @@ function Home() {
         </div>
 
         <div className="flex-group">
-          <a href="./send-peticion" className="button">
-            Redactar PQRSF
-          </a>
-          <a href="./search-peticion" className="button">
-            Consultar PQRSF
-          </a>
+          <Link to="./send-peticion">
+            <button className="button">Redactar PQRSF</button>
+          </Link>
+          <Link to="./search-peticion">
+            <button className="button">Consultar PQRSF</button>
+          </Link>
         </div>
       </div>
     </Layout>

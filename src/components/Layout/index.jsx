@@ -3,7 +3,7 @@ import "./style.css";
 function Layout({ children }) {
   return (
     <div className="container">
-      <div className="container-page">{children}</div>;
+      <div className="container-page">{children}</div>
     </div>
   );
 }

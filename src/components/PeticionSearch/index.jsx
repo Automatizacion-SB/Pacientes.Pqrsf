@@ -2,6 +2,7 @@
 import { useContext } from "react";
 import "./style.css";
 import { PeticionContext } from "../../Context";
+import { Link } from "react-router-dom";
 
 function PeticionSearch({ data }) {
   const { id, fechaRecepcion: isoDate, estado } = data;
@@ -36,9 +37,9 @@ function PeticionSearch({ data }) {
             {estadoPeticion}
           </span>
         </div>
-        <a href="./" className="button">
-          Regresar
-        </a>
+        <Link to="/">
+          <button className="button">Regresar a inicio</button>
+        </Link>
       </div>
     </div>
   );
