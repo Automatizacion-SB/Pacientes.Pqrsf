@@ -70,6 +70,7 @@ function SendPeticion() {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
     reset,
   } = useForm();
@@ -169,13 +170,21 @@ function SendPeticion() {
               type="text"
               className="input"
               {...register("peticionario.id", {
-                required: {
-                  value: isRequiredPeticionario,
-                  message: "campo requerido",
-                },
+                required: "Campo requerido",
                 pattern: {
-                  value: /^\d+$/,
-                  message: "Por favor, ingresa solo números",
+                  value: /^(\d+|[a-zA-Z0-9]+)$/, // Patrón que permite alfanuméricos
+                  message:
+                    "Por favor, ingresa solo números o caracteres alfanuméricos",
+                },
+                validate: (value) => {
+                  // Validación condicional basada en peticionario.tipoId
+                  if (
+                    watch("peticionario.tipoId") === "PA" &&
+                    !/^[a-zA-Z0-9]+$/.test(value)
+                  ) {
+                    return "Este campo debe contener solo caracteres alfanuméricos";
+                  }
+                  return true;
                 },
               })}
             />
@@ -304,13 +313,21 @@ function SendPeticion() {
               type="text"
               className="input"
               {...register("paciente.id", {
-                required: {
-                  value: isRequiredPaciente,
-                  message: "campo requerido",
-                },
+                required: "Campo requerido",
                 pattern: {
-                  value: /^\d+$/,
-                  message: "Por favor, ingresa solo números",
+                  value: /^(\d+|[a-zA-Z0-9]+)$/, // Patrón que permite alfanuméricos
+                  message:
+                    "Por favor, ingresa solo números o caracteres alfanuméricos",
+                },
+                validate: (value) => {
+                  // Validación condicional basada en paciente.tipoId
+                  if (
+                    watch("paciente.tipoId") === "PA" &&
+                    !/^[a-zA-Z0-9]+$/.test(value)
+                  ) {
+                    return "Este campo debe contener solo caracteres alfanuméricos";
+                  }
+                  return true;
                 },
               })}
             />
