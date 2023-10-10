@@ -30,12 +30,12 @@ function PeticionSearch({ data }) {
       <div className={`${context.isPeticionDetailOpen ? "" : "hidden"}  card`}>
         <h2>Peticion con identificador {id}</h2>
         <p className="card__text">fecha de envió: {fechaRecepcion}</p>
-        <p className="card__text">
-          estado de la peticion
+        <div className="">
+          <p className="card__text">estado de la peticion</p>
           <span className={`status ${status[estadoId]} `}>
             {estadoPeticion}
           </span>
-        </p>
+        </div>
         <a href="./" className="button">
           Regresar
         </a>

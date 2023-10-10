@@ -32,3 +32,9 @@
   border-radius: 5px;
   background-color: var(--green);
 }
+
+@media (400px <= width <= 600px) {
+  .nav__item {
+    display: none;
+  }
+}
