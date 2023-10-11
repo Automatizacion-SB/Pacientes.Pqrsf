@@ -74,6 +74,15 @@
   border-color: var(--green-dark);
 }
 
+.radio-options {
+  display: flex;
+  gap: 1rem;
+}
+
+.radio-options label {
+  margin-left: 9px;
+}
+
 .grid-group {
   width: 100%;
   display: flex;
