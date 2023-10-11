@@ -27,6 +27,13 @@ function SendPeticion() {
   const [isRequiredPeticionario, setIsRequiredPeticionario] = useState(false);
   const [isRequiredPaciente, setIsRequiredPaciente] = useState(false);
 
+  useState(null);
+
+  // const mostrarPaciente = () => {
+  //   const tipoPeticoin = watch("tipoPeticionId");
+
+  //   if (tipoPeticoin)
+  // };
   const [peticion, setPeticion] = useState({});
 
   const [pacienteRegimenId, setPacienteRegimenId] = useState("");
@@ -172,6 +179,10 @@ function SendPeticion() {
               className="input"
               id="peticionario.tipoId"
               {...register("peticionario.tipoId", {
+                maxLength: {
+                  value: 17,
+                  message: "Máximo 17 caracteres",
+                },
                 validate: (value) => {
                   value
                     ? setIsRequiredPeticionario(true)
@@ -277,6 +288,14 @@ function SendPeticion() {
               className="input"
               id="peticionario.telefono"
               {...register("peticionario.telefono", {
+                minLength: {
+                  value: 7,
+                  message: "mínimo 7 caracteres",
+                },
+                maxLength: {
+                  value: 10,
+                  message: "máximo 10 caracteres",
+                },
                 required: {
                   value: isRequiredPeticionario,
                   message: "Campo requerido",
@@ -304,6 +323,10 @@ function SendPeticion() {
               id="peticionario.email"
               {...register("peticionario.email", {
                 pattern: {
+                  maxLength: {
+                    value: 125,
+                    message: "Máximo 125 caracteres",
+                  },
                   value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
                   message:
                     "Por favor, ingresa una dirección de correo electrónico válida",
@@ -323,6 +346,10 @@ function SendPeticion() {
               className="input"
               id="paciente.tipoId"
               {...register("paciente.tipoId", {
+                maxLength: {
+                  value: 17,
+                  message: "Máximo 17 caracteres",
+                },
                 validate: (value) => {
                   value
                     ? setIsRequiredPaciente(true)
@@ -626,6 +653,10 @@ function SendPeticion() {
               className="input"
               id="motivo"
               {...register("motivo", {
+                minLength: {
+                  value: 20,
+                  message: "Mínimo 20 caracteres",
+                },
                 required: {
                   value: true,
                   message: "Campo requerido",
