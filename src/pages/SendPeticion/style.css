@@ -44,7 +44,7 @@
 }
 
 .input-box__all .input {
-  width: 96%;
+  width: 95%;
   height: 90px;
   outline: none;
   border-radius: 5px;
@@ -101,11 +101,16 @@
   .form {
     width: 90%;
   }
+
   .section {
     flex-direction: column;
   }
 
   .input-box {
     width: 100%;
+  }
+
+  .input-box__all .input {
+    width: 112%;
   }
 }

@@ -77,6 +77,10 @@ function SendPeticion() {
     reset,
   } = useForm();
 
+  useEffect(() => {
+    window.scrollTo(0, 0); // Se desplaza al principio cuando se carga la página
+  }, []);
+
   // Efecto para establecer el valor predeterminado de paciente.regimenId
   useEffect(() => {
     if (watch("paciente.epsId") === "15") {
@@ -86,6 +90,13 @@ function SendPeticion() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [watch("paciente.epsId")]);
+
+  const scrollToBottom = () => {
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      behavior: "smooth", // Desplazamiento suave
+    });
+  };
 
   const onSubmit = (data) => {
     const URL = "http://172.16.1.184:3000/api/v1/pqrsf";
@@ -116,6 +127,7 @@ function SendPeticion() {
       });
 
     openModal();
+    setTimeout(scrollToBottom);
   };
 
   return (
