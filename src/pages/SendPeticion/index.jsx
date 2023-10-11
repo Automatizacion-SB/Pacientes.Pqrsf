@@ -39,34 +39,49 @@ function SendPeticion() {
   const [pacienteRegimenId, setPacienteRegimenId] = useState("");
 
   useEffect(() => {
-    fetch(`${URL_REFERENCIAS}tipos_peticion`)
-      .then((response) => response.json())
-      .then((data) => setTiposPeticion(data));
+    // Array de URLs de las solicitudes
+    const urls = [
+      `${URL_REFERENCIAS}tipos_peticion`,
+      `${URL_REFERENCIAS}tipos_identificacion`,
+      `${URL_REFERENCIAS}eps`,
+      `${URL_REFERENCIAS}regimenes`,
+      `${URL_REFERENCIAS}departamentos`,
+      `${URL_REFERENCIAS}areas`,
+      `${URL_REFERENCIAS}servicios`,
+    ];
 
-    fetch(`${URL_REFERENCIAS}tipos_identificacion`)
-      .then((response) => response.json())
-      .then((data) => setTiposIdentificacion(data));
+    // Función para realizar una solicitud y convertirla a JSON
+    const fetchData = async (url) => {
+      const response = await fetch(url);
+      return response.json();
+    };
 
-    fetch(`${URL_REFERENCIAS}eps`)
-      .then((response) => response.json())
-      .then((data) => setEps(data));
-
-    fetch(`${URL_REFERENCIAS}regimenes`)
-      .then((response) => response.json())
-      .then((data) => setRegimenes(data));
-
-    fetch(`${URL_REFERENCIAS}departamentos`)
-      .then((response) => response.json())
-      .then((data) => setDepartamentos(data));
-
-    fetch(`${URL_REFERENCIAS}areas`)
-      .then((response) => response.json())
-      .then((data) => setAreas(data));
-
-    fetch(`${URL_REFERENCIAS}servicios`)
-      .then((response) => response.json())
-      .then((data) => setServicios(data));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // Realiza todas las solicitudes simultáneamente y espera a que se completen
+    Promise.all(urls.map(fetchData))
+      .then((results) => {
+        // Desestructura los resultados y actualiza los estados
+        const [
+          tiposPeticion,
+          tiposIdentificacion,
+          eps,
+          regimenes,
+          departamentos,
+          areas,
+          servicios,
+        ] = results;
+        setTiposPeticion(tiposPeticion);
+        setTiposIdentificacion(tiposIdentificacion);
+        setEps(eps);
+        setRegimenes(regimenes);
+        setDepartamentos(departamentos);
+        setAreas(areas);
+        setServicios(servicios);
+      })
+      .catch((error) => {
+        // Maneja errores aquí
+        console.error("Error al cargar datos:", error);
+      });
+    console.log(servicios);
   }, []);
 
   useEffect(() => {
@@ -114,8 +129,6 @@ function SendPeticion() {
     if (!data.paciente.id) {
       delete data.paciente;
     }
-
-    console.log(data);
 
     fetch(URL, {
       method: "POST",

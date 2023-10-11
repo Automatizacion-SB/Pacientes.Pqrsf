@@ -25,14 +25,18 @@
 
 .detail {
   display: flex;
-  gap: 2rem;
-  margin: 2rem 0;
+  gap: 1.5rem;
+  margin: 2.5rem 0 3rem;
   align-items: center;
 }
 
 .detail__logo {
   width: 50px;
   height: 50px;
+}
+
+.detail__text {
+  margin-bottom: 1rem;
 }
 
 .detail__text a {
@@ -64,7 +68,7 @@
     padding: 0;
   }
   .detail {
-    flex-direction: column-reverse;
+    flex-direction: column;
   }
 
   .flex-group {
