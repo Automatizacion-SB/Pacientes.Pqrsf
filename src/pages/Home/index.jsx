@@ -36,6 +36,12 @@ function Home() {
               intervención del hospital para la resolución de una situación, la
               prestación de un servicio, la información o requerimiento de copia
               de documentos, entre otros.
+              {
+                <Link reloadDocument to="/send-peticion">
+                  {" "}
+                  Redactar aquí
+                </Link>
+              }
             </p>
           </article>
 
@@ -44,6 +50,12 @@ function Home() {
             <p className="detail__text">
               <span>Queja:</span> Manifestación de una persona, a través de la
               cual expresa inconformidad con el actuar del hospital.
+              {
+                <Link reloadDocument to="/send-peticion">
+                  {" "}
+                  Redactar aquí
+                </Link>
+              }
             </p>
           </article>
 
@@ -54,6 +66,12 @@ function Home() {
               del hospital dan a conocer su insatisfacción con la prestación del
               servicio de salud por parte del personal hospitalario o solicita
               el reconocimiento del derecho fundamental a la salud.
+              {
+                <Link reloadDocument to="/send-peticion">
+                  {" "}
+                  Redactar aquí
+                </Link>
+              }
             </p>
           </article>
 
@@ -65,7 +83,13 @@ function Home() {
               funciones y servicios ofrecidos por la Institución, así como
               propuestas para mejorar procedimientos internos y en algunos casos
               racionalizar el empleo de los recursos disponibles y hacer más
-              participativa la gestión.
+              participativa la gestión.{" "}
+              {
+                <Link reloadDocument to="/send-peticion">
+                  {" "}
+                  Redactar aquí
+                </Link>
+              }
             </p>
           </article>
 
@@ -75,16 +99,22 @@ function Home() {
               <span>Felicitación:</span> Es la manifestación que expresa el
               agrado o satisfacción que experimenta un usuario con un empleado,
               dependencia o con el proceso que genera la prestación de un
-              servicio. Consultar solicitud Enviar solicitud
+              servicio.{" "}
+              {
+                <Link reloadDocument to="/send-peticion">
+                  {" "}
+                  Redactar aquí
+                </Link>
+              }
             </p>
           </article>
         </div>
 
         <div className="flex-group">
-          <Link to="./send-peticion">
+          <Link to reloadDocument="/send-peticion">
             <button className="button">Redactar PQRSF</button>
           </Link>
-          <Link to="./search-peticion">
+          <Link to reloadDocument="./search-peticion">
             <button className="button">Consultar PQRSF</button>
           </Link>
         </div>

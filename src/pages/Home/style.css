@@ -35,7 +35,9 @@
   height: 50px;
 }
 
-.detail__text {
+.detail__text a {
+  color: var(--orange);
+  text-decoration: none;
 }
 
 .detail__text span {
@@ -62,7 +64,7 @@
     padding: 0;
   }
   .detail {
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
 
   .flex-group {

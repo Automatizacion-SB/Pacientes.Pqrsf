@@ -6,7 +6,9 @@ import "./style.css";
 function Navbar() {
   return (
     <nav className="nav">
-      <img src={bandera} alt="" className="nav__logo" />
+      <NavLink to="/">
+        <img src={bandera} alt="" className="nav__logo" />
+      </NavLink>
       <ul className="nav__list">
         <li className="nav__item">
           <NavLink

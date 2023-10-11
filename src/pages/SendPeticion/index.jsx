@@ -84,6 +84,7 @@ function SendPeticion() {
     } else {
       setPacienteRegimenId(""); // Restablece el valor predeterminado si no es igual a 1
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [watch("paciente.epsId")]);
 
   const onSubmit = (data) => {
@@ -127,10 +128,11 @@ function SendPeticion() {
           </label>
           <select
             className="input"
+            id="tipoPeticionId"
             {...register("tipoPeticionId", {
               required: {
                 value: true,
-                message: "campo obligatorio",
+                message: "Campo requerido",
               },
             })}
           >
@@ -156,6 +158,7 @@ function SendPeticion() {
             </label>
             <select
               className="input"
+              id="peticionario.tipoId"
               {...register("peticionario.tipoId", {
                 validate: (value) => {
                   value
@@ -180,12 +183,15 @@ function SendPeticion() {
             <input
               type="text"
               className="input"
+              id="peticionario.id"
               {...register("peticionario.id", {
-                required: "Campo requerido",
+                required: {
+                  value: isRequiredPeticionario,
+                  message: "Campo requerido",
+                },
                 pattern: {
                   value: /^(\d+|[a-zA-Z0-9]+)$/, // Patrón que permite alfanuméricos
-                  message:
-                    "Por favor, ingresa solo números o caracteres alfanuméricos",
+                  message: "Ingresa solo números o caracteres alfanuméricos",
                 },
                 validate: (value) => {
                   // Validación condicional basada en peticionario.tipoId
@@ -213,10 +219,11 @@ function SendPeticion() {
             <input
               type="text"
               className="input"
+              id="peticionario.nombre"
               {...register("peticionario.nombre", {
                 required: {
                   value: isRequiredPeticionario,
-                  message: "campo requerido",
+                  message: "Campo requerido",
                 },
               })}
             />
@@ -234,10 +241,11 @@ function SendPeticion() {
             <input
               type="text"
               className="input"
+              id="peticionario.apellido"
               {...register("peticionario.apellido", {
                 required: {
                   value: isRequiredPeticionario,
-                  message: "campo requerido",
+                  message: "Campo requerido",
                 },
               })}
             />
@@ -255,10 +263,11 @@ function SendPeticion() {
             <input
               type="text"
               className="input"
+              id="peticionario.telefono"
               {...register("peticionario.telefono", {
                 required: {
                   value: isRequiredPeticionario,
-                  message: "campo requerido",
+                  message: "Campo requerido",
                 },
                 pattern: {
                   value: /^\d+$/,
@@ -280,6 +289,7 @@ function SendPeticion() {
             <input
               type="text"
               className="input"
+              id="peticionario.email"
               {...register("peticionario.email", {
                 pattern: {
                   value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
@@ -299,6 +309,7 @@ function SendPeticion() {
             </label>
             <select
               className="input"
+              id="paciente.tipoId"
               {...register("paciente.tipoId", {
                 validate: (value) => {
                   value
@@ -323,12 +334,15 @@ function SendPeticion() {
             <input
               type="text"
               className="input"
+              id="paciente.id"
               {...register("paciente.id", {
-                required: "Campo requerido",
+                required: {
+                  value: isRequiredPaciente,
+                  message: "Campo requerido",
+                },
                 pattern: {
                   value: /^(\d+|[a-zA-Z0-9]+)$/, // Patrón que permite alfanuméricos
-                  message:
-                    "Por favor, ingresa solo números o caracteres alfanuméricos",
+                  message: "Ingresa solo números o caracteres alfanuméricos",
                 },
                 validate: (value) => {
                   // Validación condicional basada en paciente.tipoId
@@ -356,10 +370,11 @@ function SendPeticion() {
             <input
               type="text"
               className="input"
+              id="paciente.nombre"
               {...register("paciente.nombre", {
                 required: {
                   value: isRequiredPaciente,
-                  message: "campo requerido",
+                  message: "Campo requerido",
                 },
               })}
             />
@@ -377,10 +392,11 @@ function SendPeticion() {
             <input
               type="text"
               className="input"
+              id="paciente.apellido"
               {...register("paciente.apellido", {
                 required: {
                   value: isRequiredPaciente,
-                  message: "campo requerido",
+                  message: "Campo requerido",
                 },
               })}
             />
@@ -397,10 +413,11 @@ function SendPeticion() {
             </label>
             <select
               className="input"
+              id="paciente.epsId"
               {...register("paciente.epsId", {
                 required: {
                   value: isRequiredPaciente,
-                  message: "campo requerido",
+                  message: "Campo requerido",
                 },
               })}
             >
@@ -427,10 +444,11 @@ function SendPeticion() {
               value={pacienteRegimenId}
               onChange={(e) => setPacienteRegimenId(e.target.value)}
               className="input"
+              id="paciente.regimenId"
               {...register("paciente.regimenId", {
                 required: {
                   value: isRequiredPaciente,
-                  message: "campo requerido",
+                  message: "Campo requerido",
                 },
               })}
             >
@@ -454,10 +472,11 @@ function SendPeticion() {
             </label>
             <select
               className="input"
+              id="paciente.departamentoId"
               {...register("paciente.departamentoId", {
                 required: {
                   value: isRequiredPaciente,
-                  message: "campo requerido",
+                  message: "Campo requerido",
                 },
               })}
               onChange={(e) => setDepartamentoSelected(e.target.value)}
@@ -482,10 +501,11 @@ function SendPeticion() {
             </label>
             <select
               className="input"
+              id="paciente.municipioId"
               {...register("paciente.municipioId", {
                 required: {
                   value: isRequiredPaciente,
-                  message: "campo requerido",
+                  message: "Campo requerido",
                 },
               })}
             >
@@ -512,10 +532,11 @@ function SendPeticion() {
             </label>
             <select
               className="input"
+              id="areaId"
               {...register("areaId", {
                 required: {
                   value: true,
-                  message: "campo requerido",
+                  message: "Campo requerido",
                 },
               })}
             >
@@ -539,10 +560,11 @@ function SendPeticion() {
             </label>
             <select
               className="input"
+              id="servicioId"
               {...register("servicioId", {
                 required: {
                   value: true,
-                  message: "campo requerido",
+                  message: "Campo requerido",
                 },
               })}
             >
@@ -567,10 +589,11 @@ function SendPeticion() {
             <input
               type="text"
               className="input"
+              id="dirigidaA"
               {...register("dirigidaA", {
                 required: {
                   value: true,
-                  message: "campo obligatorio",
+                  message: "Campo requerido",
                 },
               })}
             />
@@ -589,10 +612,11 @@ function SendPeticion() {
               cols="30"
               rows="10"
               className="input"
+              id="motivo"
               {...register("motivo", {
                 required: {
                   value: true,
-                  message: "campo requerido",
+                  message: "Campo requerido",
                 },
               })}
             ></textarea>
