@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useForm } from "react-hook-form";
 import { useContext, useEffect, useState } from "react";
 
@@ -13,6 +14,7 @@ function SendPeticion() {
   const URL_API = "http://172.16.1.184:3000/api/v1/";
   const URL_REFERENCIAS = `${URL_API}referencias/`;
 
+  const [isDisabled, setISDisables] = useState(false);
   const [tiposPeticion, setTiposPeticion] = useState([]);
   const [tiposIdentificacion, setTiposIdentificacion] = useState([]);
   const [eps, setEps] = useState([]);
@@ -100,6 +102,11 @@ function SendPeticion() {
     window.scrollTo(0, 0); // Se desplaza al principio cuando se carga la página
   }, []);
 
+  useEffect(() => {
+    const pacienteEpsId = watch("paciente.epsId");
+    setPacienteRegimenId(pacienteEpsId);
+  }, [watch("paciente.epsId")]);
+
   const scrollToBottom = () => {
     window.scrollTo({
       top: document.body.scrollHeight,
@@ -137,22 +144,22 @@ function SendPeticion() {
     setTimeout(scrollToBottom);
   };
 
-  const pacienteEpsId = watch("paciente.epsId");
   const pacienteEpsId2 = watch("paciente.regimenId");
+
+  console.log(pacienteEpsId2);
   // Define una función para establecer el valor de "paciente.regimenId" según "paciente.epsId"
-  const setPacienteRegimenId = () => {
-    if (pacienteEpsId == "15") {
-      setValue("paciente.regimenId", 1);
+  const setPacienteRegimenId = (selectedValue) => {
+    if (selectedValue == "15") {
+      setValue("paciente.regimenId", "2");
+      setISDisables(true);
     } else {
       setValue("paciente.regimenId", ""); // Restablece el valor si no es igual a 15
+      setISDisables(false);
     }
   };
 
   return (
     <Layout>
-      <p>{pacienteEpsId}</p>
-      <p>{pacienteEpsId2}</p>
-      <p>{watch("paciente.regimenId")}</p>
       <h1 className="title">Redactar una peticion</h1>
       <form onSubmit={handleSubmit(onSubmit)} className="form">
         <div className="input-box">
@@ -170,6 +177,7 @@ function SendPeticion() {
             })}
           >
             <option value=""></option>
+            <option value="2">h</option>
             {tiposPeticion.map(({ id, nombre }) => (
               <option key={id} value={id}>
                 {nombre}
@@ -496,8 +504,9 @@ function SendPeticion() {
                 </label>
                 <select
                   className="input"
-                  onChange={setPacienteRegimenId} // Llama a la función cuando cambia el valor
                   id="paciente.regimenId"
+                  onChange={(e) => setPacienteRegimenId(e.target.value)} // Llama a la función cuando cambia el valor
+                  disabled={isDisabled}
                   {...register("paciente.regimenId", {
                     required: {
                       value: isRequiredPaciente,
@@ -506,6 +515,8 @@ function SendPeticion() {
                   })}
                 >
                   <option value=""></option>
+                  <option value="2">sin dato</option>
+                  <option value="3">hola</option>
                   {regimenes.map(({ id, nombre }) => (
                     <option key={id} value={id}>
                       {nombre}
