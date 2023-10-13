@@ -177,7 +177,6 @@ function SendPeticion() {
             })}
           >
             <option value=""></option>
-            <option value="2">h</option>
             {tiposPeticion.map(({ id, nombre }) => (
               <option key={id} value={id}>
                 {nombre}
@@ -515,8 +514,6 @@ function SendPeticion() {
                   })}
                 >
                   <option value=""></option>
-                  <option value="2">sin dato</option>
-                  <option value="3">hola</option>
                   {regimenes.map(({ id, nombre }) => (
                     <option key={id} value={id}>
                       {nombre}
