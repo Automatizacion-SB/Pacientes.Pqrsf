@@ -11,8 +11,7 @@ import { Modal } from "../../components/Modal";
 function SendPeticion() {
   const { openModal } = useContext(PeticionContext);
 
-  const URL_API = "http://172.16.1.184:3000/api/v1/";
-  const URL_REFERENCIAS = `${URL_API}referencias/`;
+  const URL_API = "http://172.16.1.184:3001/api/v1/";
 
   const [isDisabled, setISDisables] = useState(false);
   const [tiposPeticion, setTiposPeticion] = useState([]);
@@ -36,13 +35,13 @@ function SendPeticion() {
   useEffect(() => {
     // Array de URLs de las solicitudes
     const urls = [
-      `${URL_REFERENCIAS}tipos_peticion`,
-      `${URL_REFERENCIAS}tipos_identificacion`,
-      `${URL_REFERENCIAS}eps`,
-      `${URL_REFERENCIAS}regimenes`,
-      `${URL_REFERENCIAS}departamentos`,
-      `${URL_REFERENCIAS}areas`,
-      `${URL_REFERENCIAS}servicios`,
+      `${URL_API}referencias/tipos_peticion`,
+      `${URL_API}referencias/tipos_identificacion`,
+      `${URL_API}referencias/eps`,
+      `${URL_API}referencias/regimenes`,
+      `${URL_API}referencias/departamentos`,
+      `${URL_API}referencias/areas`,
+      `${URL_API}referencias/servicios`,
     ];
 
     // Función para realizar una solicitud y convertirla a JSON
@@ -79,7 +78,9 @@ function SendPeticion() {
   }, []);
 
   useEffect(() => {
-    fetch(`${URL_REFERENCIAS}departamentos/${departamentoSelected}/municipios`)
+    fetch(
+      `${URL_API}referencias/departamentos/${departamentoSelected}/municipios`
+    )
       .then((response) => response.json())
       .then((data) => setMunicipios(data));
     // eslint-disable-next-line react-hooks/exhaustive-deps
